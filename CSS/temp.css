@@ -1,0 +1,296 @@
+/*START VARIABLES*/
+:root{
+  --mainColor: #19c8fa;
+  --TransparentColor: rgb(15 116 143 / 70%)
+}
+/*START VARIABLES*/
+/*START GLOBAL RULES*/
+*{
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body{
+  font-family: 'Open Sans', sans-serif;
+}
+
+.container{
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 15px ;
+  padding-right: 15px ;
+}
+
+/* Small */
+@media (min-width: 768px) {
+  .container {
+     width: 750px;
+  }
+}
+/* Medium */
+@media (min-width: 992px) {
+  .container {
+    width: 970px;
+  }
+}
+  /* Large */
+@media (min-width: 1200px) {
+  .container {
+    width: 1170px;
+  }
+}
+
+html{
+  scroll-behavior: smooth; /****************/
+}
+
+ul{
+  list-style: none;
+}
+/*END GLOBAL RULES*/
+
+/* START HEADING DESIGN */
+.main-heading{
+  text-align: center;
+}
+.main-heading h2{
+  font-weight: normal;
+  font-size: 40px;
+  position: relative;
+  text-transform: uppercase;
+  margin-bottom: 70px;
+}
+.main-heading h2::before{
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -30px;
+  height: 2px;
+  width: 120px;
+  background-color: #333;
+}
+.main-heading h2::after{
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -36px;
+  width: 14px;
+  height: 14px;
+  border: 2px solid #333;
+  border-radius:50% ;
+  background-color: white;
+}
+.main-heading p{ /*********/
+  width: 550px;
+  margin: 0 auto 100px;
+  max-width: 100%;
+  line-height: 2;
+  color: #777;
+}
+/* END HEADING DESIGN */
+
+/* START THE NAV BAR */
+header{ /*************************************************/
+  position: absolute;
+  width: 100%;
+  z-index: 2;
+/* 3ashan ana ha add a background lel landing wl header msh goz2 mn el landing fa el 3 lines dol are a must */
+}
+header .container{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  min-height: 100px;
+}
+
+header .container::after{
+content: "";
+position: absolute;
+bottom: 1px;
+background-color: #a2a2a2;
+width: calc(100% - 30px); /* 3ashan ashel mno el padding */
+height: 1px;
+z-index: -1;
+}
+
+header .container .image img{
+  height: 40px;
+}
+header .container nav{
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+header .container nav .toggle-menu{
+  color: white;
+  font-size: 22px;
+}
+@media(min-width:768px){
+  header .container .toggle-menu{
+    display: none; /* appears in mobile only */
+  }
+}
+
+@media(max-width:768px){
+  header .container nav ul{
+    display: none; /* appears in mobile only */
+  }
+  header .container nav .toggle-menu:hover + ul{ /*lama a3ml hover 3ala el toggle-menu ghyar fl ul el ba3daha*/
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: rgb(0 0 0 / 50%);
+  }
+  header .container nav .toggle-menu:hover + ul li a{
+    padding: 15px;
+  }
+}
+header .container nav ul{
+   /* display: flex ;*/
+  
+}
+header .container nav ul li{
+  display: inline-block;
+}
+header .container nav ul li a{
+  text-decoration: none;
+  color: white;
+  transition: 0.3s;
+  font-size: 14px;
+  padding: 40px 10px;
+  display: block ; /* mngherha fl responsive hatboz el after msh hatkon mashya m3 el home*/
+}
+header .container nav ul li a.active,
+header .container nav ul li a:hover{
+  color: var(--mainColor);
+  border-bottom: 1px solid var(--mainColor);
+}
+header .container nav .form{
+  position: relative;
+  width: 40px;
+  height: 30px;
+  text-align: center;
+  border-left: 1px solid white;
+  margin-left: 30px;
+}
+header .container nav .form i{
+  color: white;
+  position: absolute;
+  font-size: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 0;
+}
+
+/* END THE NAV BAR */
+
+/* START THE LANDING*/
+.landing{
+  height:100vh;
+  background-image: url(../IMGS/landing.jpg);
+  background-color: #1f2021; /* if the pic failed to load this is a backup background*/
+  background-size: cover;
+  position: relative;
+}
+.landing .overlay{
+  position: absolute;
+  height: 100%; 
+  width: 100%;
+  background-color: rgb(0 0 0 / 60%);
+  /*
+  left: 0;
+  top: 0;
+  */
+}
+.landing .overlay .text{
+  position: absolute;
+  display:flex;
+  justify-content:flex-end;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 50%;
+  background: var(--TransparentColor);
+  color: white;
+  padding: 50px;
+  /*
+  left: 0;
+  */
+}
+.landing .overlay .text .content{
+  max-width:500px;
+  /*
+  margin-left: 10vw;  --> my first concept bs fl responsive zah2tny
+  */
+}
+@media(max-width:768px){
+  .landing .overlay .text{
+    width: 100%;
+  }
+  .landing .overlay .text .content{
+    max-width: 100%;
+  }
+}
+.landing .overlay .text .content h2{
+  font-size: 32px;
+  line-height: 1.5;
+  margin-bottom: 20px;
+  font-weight: normal;
+
+}
+.landing .overlay .text .content p{
+  font-size: 14px;
+  line-height: 2;
+}
+.landing .change-background{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #ddd;
+}
+@media(max-width:768px){
+  .landing .change-background{
+    display: none;
+  }
+}
+.landing .fa-angle-left {
+  left: 30px;
+}
+.landing .fa-angle-right {
+  right: 30px;
+}
+.landing .bullets {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 30px;
+  display: flex;
+}
+.landing .bullets li {
+  width: 20px;
+  height: 20px;
+  border: 1px solid white;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+.landing .bullets li.active {
+  background-color: var(--mainColor);
+  border-color: var(--mainColor);
+}
+/* END THE LANDING*/
+
+/* START THE SERVICES */
+.services{
+  padding-top :100px ;
+  padding-bottom :100px ;
+}
+/* END THE SERVICES */
